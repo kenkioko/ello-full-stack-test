@@ -4,8 +4,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import Index from './routes/Index';
-import Page from './routes/Page';
+import IndexPage from './routes/IndexPage';
+import ViewPage from './routes/ViewPage';
 import './styles/App.css';
 
 class App extends Component {
@@ -84,14 +84,22 @@ class App extends Component {
     }
 
     render() {
-        const index_page = <Index alert={ this.state.alert } book={ this.state.book } />;
-        const view_page = <Page alert={ this.state.alert } book={ this.state.book } />;
+        // var props = {
+        //     alert: this.state.alert, 
+        //     book: this.state.book,
+        // }
+
+        // const index = React.createElement('IndexPage', props);
+
+        
+        const index = <IndexPage alert={ this.state.alert } book={ this.state.book } />;
+        const view = <ViewPage alert={ this.state.alert } book={ this.state.book } />;
 
         return (
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={ index_page } />
-                    <Route path="/pages" element={ view_page } />
+                    <Route path="/" element={ index } />
+                    <Route path="/pages" element={ view } />
                 </Routes>
             </BrowserRouter>
         );

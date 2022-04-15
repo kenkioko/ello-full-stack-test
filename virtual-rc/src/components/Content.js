@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import '../styles/Alert.css';
 
-class Content extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            token: {
-                value: null,
-                position: []
-            }
-        };
+function Content(props) {
+    if (!props.page) {
+        return null;
     }
 
-    render() {
-        return (
-            <div>
-                ...
-            </div>
-        );
-    }
+    return (
+        <div className="page-content">
+            { props.page.pageIndex }
+            { props.page.content }
+        </div>
+    );
 }
+
+// const page = React.createElement('h1', {
+//     className: 'greeting'
+// },
+// 'Hello, world!'
+// );
 
 export default Content;
