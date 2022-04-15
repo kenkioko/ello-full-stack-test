@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import '../styles/Alert.css';
 
-class Book extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pages: [],
-        };
+function Book(props) {
+    if (!props.book) {
+        return null;
     }
 
-    render() {
-        return (
-            <div>
-                ...
-            </div>
-        );
-    }
+    return (
+        <div className="book">
+            <p>Total Pages:</p>
+            <p>{ props.book.pages.length }</p>
+
+            <Link to="/pages">Open Book</Link>
+        </div>
+    );
+
 }
 
 export default Book;

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import Alert from './Alert';
-import Book from './Book';
-import '../styles/App.css';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
+import Index from './routes/Index';
+import Page from './routes/Page';
+import './styles/App.css';
 
 class App extends Component {
     constructor(props) {
@@ -22,7 +27,7 @@ class App extends Component {
         // GreaphQL query
         var graphql = {
             query: `{
-                 {
+                book {
                     pages {
                         pageIndex
                         content
@@ -54,12 +59,14 @@ class App extends Component {
                 // Change into json data
                 return response.json();
             })
-            .then((data) => {
+            .then((json) => {
 
                 // Code for handling the json data
+                var book = (json.data.book) ?? null;
+                
                 // Set 'book' state variable
                 this.setState({
-                    book: data
+                    book: book
                 });
             })
             .catch((error) => {
@@ -77,14 +84,16 @@ class App extends Component {
     }
 
     render() {
-        return (
-            <div className="App">
-                {/* Show Error Message */}
-                <Alert alert={ this.state.alert } />
+        const index_page = <Index alert={ this.state.alert } book={ this.state.book } />;
+        const view_page = <Page alert={ this.state.alert } book={ this.state.book } />;
 
-                {/* Show Book Component */}
-                <Book />
-            </div>
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={ index_page } />
+                    <Route path="/pages" element={ view_page } />
+                </Routes>
+            </BrowserRouter>
         );
     }
 }
