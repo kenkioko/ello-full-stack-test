@@ -36,15 +36,13 @@ class ViewPage extends Component {
     }
     
     render() {
-        const content = this.displayPage();
-
         return (
             <div className="Index">
                 {/* Show Error Message */}
                 <Alert alert={ this.props.alert } />
 
                 {/* Show Book Pages Content */}
-                <Page content={ content } />
+                <Page content={ this.displayPage() } />
             </div>
         );
     }

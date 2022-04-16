@@ -84,16 +84,13 @@ class App extends Component {
     }
 
     render() {
-        // var props = {
-        //     alert: this.state.alert, 
-        //     book: this.state.book,
-        // }
+        var props = {
+            alert: this.state.alert, 
+            book: this.state.book,
+        }
 
-        // const index = React.createElement('IndexPage', props);
-
-        
-        const index = <IndexPage alert={ this.state.alert } book={ this.state.book } />;
-        const view = <ViewPage alert={ this.state.alert } book={ this.state.book } />;
+        const index = React.createElement(IndexPage, props);
+        const view = React.createElement(ViewPage, props);
 
         return (
             <BrowserRouter>
