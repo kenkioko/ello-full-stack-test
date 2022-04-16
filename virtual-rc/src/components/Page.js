@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import '../styles/Alert.css';
 
 function Page(props) {
@@ -7,7 +8,7 @@ function Page(props) {
 
     return (
         <div className="page">
-            Page ...
+            <Link to="/">Home</Link>
             { props.content }
         </div>
     );

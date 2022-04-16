@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../styles/Alert.css';
+import '../styles/Book.scss';
 
 function Book(props) {
     if (!props.book) {
@@ -11,7 +11,9 @@ function Book(props) {
             <p>Total Pages:</p>
             <p>{ props.book.pages.length }</p>
 
-            <Link to="/pages">Open Book</Link>
+            <Link to="/pages">
+                <button className="button">Open Book</button>
+            </Link>
         </div>
     );
 

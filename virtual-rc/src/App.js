@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import IndexPage from './routes/IndexPage';
 import ViewPage from './routes/ViewPage';
-import './styles/App.css';
+import './styles/App.scss';
 
 class App extends Component {
     constructor(props) {

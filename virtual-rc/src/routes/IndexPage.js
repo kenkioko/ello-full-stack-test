@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 import Alert from '../components/Alert';
 import Book from '../components/Book';
+import {
+    AppHeader,
+    AppFooter
+} from '../components/Utility';
+import '../styles/Book.scss';
 
 class IndexPage extends Component {
     
     render() {
         return (
-            <div className="Index">
-                {/* Show Error Message */}
-                <Alert alert={ this.props.alert } />
+            <div className="app">
+                <AppHeader />
 
-                {/* Show Book Component */}
-                <Book book={ this.props.book } />
+                <div className="body">
+                    {/* Show Error Message */}
+                    <Alert alert={ this.props.alert } />
+
+                    {/* Show Book Component */}
+                    <div className="book-container">
+                        <Book book={ this.props.book } />
+                    </div>
+                </div>
+
+                <AppFooter />
             </div>
         );
     }
