@@ -1,0 +1,20 @@
+.page {
+    border: 10rem solid transparent;
+    border-image: url("../images/page_border.png") 30% round;
+}
+
+.page-nav {
+    position: sticky;
+    padding: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.page-content {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

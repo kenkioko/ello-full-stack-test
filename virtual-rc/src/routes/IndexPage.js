@@ -14,7 +14,7 @@ class IndexPage extends Component {
             <div className="app">
                 <AppHeader />
 
-                <div className="body">
+                <div className="app-body">
                     {/* Show Error Message */}
                     <Alert alert={ this.props.alert } />
 

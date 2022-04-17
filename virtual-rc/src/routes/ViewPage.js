@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Alert from '../components/Alert';
-import Page from '../components/Page';
-import Content from '../components/Content';
+import Page, { PageNav } from '../components/Page';
+import {
+    AppHeader,
+    AppFooter
+} from '../components/Utility';
+import '../styles/Page.scss';
 
 class ViewPage extends Component {
     constructor(props) {
@@ -20,29 +24,21 @@ class ViewPage extends Component {
         // ...
     }
 
-    // Construct the page content
-    // Page content inside a page margin
-    displayPage = () => {
-        if (!this.props.book) {
-            return null;
-        }
-
-        // display the content
-        const page_content = this.props.book.pages.map((page) =>
-            <Content key={ page.pageIndex } page={ page } />
-        );
-
-        return page_content;
-    }
-    
     render() {
         return (
-            <div className="Index">
-                {/* Show Error Message */}
-                <Alert alert={ this.props.alert } />
+            <div className="app">
+                <AppHeader />
+                <PageNav />
 
-                {/* Show Book Pages Content */}
-                <Page content={ this.displayPage() } />
+                <div className="app-body">
+                    {/* Show Error Message */}
+                    <Alert alert={ this.props.alert } />
+
+                    {/* Show Book Component */}
+                    <Page book={ this.props.book } />
+                </div>
+
+                <AppFooter />
             </div>
         );
     }

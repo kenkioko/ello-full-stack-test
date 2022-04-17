@@ -1,6 +1,6 @@
 function AppHeader() {
     return (
-        <div className="header">
+        <div className="app-header">
             <h1>Virtual Reading Coach</h1>
         </div>
     );
@@ -8,7 +8,7 @@ function AppHeader() {
 
 function AppFooter() {
     return (
-        <div className="footer">
+        <div className="app-footer">
             <p>&copy; Virtual Reading Coach</p>
         </div>
     );
