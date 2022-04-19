@@ -4,14 +4,17 @@
 }
 
 .page-single {
-    // @extend .page;
     column-count: 1;
 }
 
 .page-double {
-    // @extend .page;
     column-count: 2;
     display: flex;
+
+    .page {
+        @extend .page;
+        width: 50%;
+    }
 }
 
 .page-nav {
