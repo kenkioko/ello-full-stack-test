@@ -23,6 +23,10 @@
         font-size: 1.2rem
     }
 
+    select:hover {
+        cursor: pointer;
+    }
+
     /* Style the arrow inside the select element: */
     select:after {
         position: absolute;

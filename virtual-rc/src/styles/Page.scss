@@ -43,4 +43,21 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
+    p {
+        padding: 1px;
+        margin: 0.5em 0;
+    }
+
+    p:hover {
+        cursor: pointer;
+    }
+}
+
+.page-text-tokenized {
+    color: blue;
+
+    span {
+        padding: 0 2px;   
+    }
 }
