@@ -1,17 +1,40 @@
 .page {
     border: 10rem solid transparent;
-    border-image: url("../images/page_border.png") 30% round;
+    border-image: url("../images/page_border.png") 20% round;
+}
+
+.page-single {
+    // @extend .page;
+    column-count: 1;
+}
+
+.page-double {
+    // @extend .page;
+    column-count: 2;
+    display: flex;
 }
 
 .page-nav {
+    background: rgba(255, 255, 255, 1);
     position: sticky;
+    display: flex;
+    top: 0;
     padding: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .page-nav-link {
+        display: flex;
+        margin-right: auto;
+    }
+
+    .page-nav-form {
+        display: flex;
+        margin-left: auto;
+    }
 }
 
 .page-content {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
     padding: 0.3rem;
     width: 100%;
     display: flex;

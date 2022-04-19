@@ -13,10 +13,4 @@ function Content(props) {
     );
 }
 
-// const page = React.createElement('h1', {
-//     className: 'greeting'
-// },
-// 'Hello, world!'
-// );
-
 export default Content;

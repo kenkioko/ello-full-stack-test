@@ -1,0 +1,54 @@
+/* The container must be positioned relative: */
+.custom-select {
+    margin: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Style the the select label element: */
+    label {
+        font-size: 1.2rem
+        // 
+    }
+
+    /* Style the select element: */
+    select {
+        background-color: #555555;
+        border: none;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.2rem
+    }
+
+    /* Style the arrow inside the select element: */
+    select:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /* Style items (options): */
+    option {
+        // position: absolute;
+        background-color: #555555;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }
+
+    /* Style items (options) on hover and selected: */
+    option:hover,
+    option:checked {
+        background-color: white;
+        color: #555555;
+    }
+}
