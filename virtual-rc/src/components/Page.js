@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Content from '../components/Content';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Construct the page content
 // Page content inside a page margin
@@ -93,8 +93,7 @@ function PageNav(props) {
             <div className="page-nav-form">
                 <div className="custom-select">
                     <label htmlFor="page-view">
-                        {/* <FontAwesomeIcon icon={solid('table-columns')} /> */}
-                        {/* Page View: */}
+                        <FontAwesomeIcon icon={solid('table-columns')} size="3x" border />
                     </label>
                     
                     <select name="page-view" id="page-view-select" onChange={ props.view_change } defaultValue={ props.page_view }>
@@ -105,13 +104,13 @@ function PageNav(props) {
 
                 <div className="custom-select">
                     <label htmlFor="page-lines">
-                        {/* <FontAwesomeIcon icon={solid('table-columns')} /> */}
-                        {/* Max Lines: */}
+                        <FontAwesomeIcon icon={solid('grip-lines')} size="3x" border />
                     </label>
 
                     <select name="page-lines" id="page-lines-select" onChange={ props.lines_change } defaultValue={ props.page_lines }>
                         <option value="10">10 Lines</option>
                         <option value="20">20 Lines</option>
+                        <option value="30">30 Lines</option>
                     </select>
                 </div>
             </div>

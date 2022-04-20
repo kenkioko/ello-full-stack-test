@@ -1,12 +1,39 @@
-import '../styles/Alert.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
-function showTokenized(event) {
-    var children = event.currentTarget.children;
-    console.log(children);
+// Toogle between original text
+function handleClick(event) {
+    const content_el = event.currentTarget.querySelector(".page-text-content");
+    const tokenized_el = event.currentTarget.querySelector(".page-text-tokenized");
 
-    for (let element of children) {
-        element.classList.toggle("d-none");
-        console.log(element);
+    // toogle dataset change
+    const toogle = event.currentTarget.dataset.toogle;
+    if (toogle === 'false') {
+        content_el.classList.add("d-none");
+        tokenized_el.classList.remove("d-none");
+
+        event.currentTarget.dataset.toogle = true;
+    }
+
+    if (toogle === 'true') {
+        content_el.classList.remove("d-none");
+        tokenized_el.classList.add("d-none");
+
+        event.currentTarget.dataset.toogle = false;
+    }
+}
+
+// Toogle the show original icon
+function handleMouse(event) {
+    const toogle = event.currentTarget.dataset.toogle;
+    const toogle_el = event.currentTarget.querySelector(".page-text-toogle");
+
+    if (event.type === 'mouseenter') {
+        toogle_el.classList.remove('d-none');
+    } 
+    
+    if (event.type === 'mouseleave' && toogle === 'false') {
+        toogle_el.classList.add('d-none');
     }
 }
 
@@ -31,8 +58,16 @@ function Content(props) {
     )
 
     return (
-        <div className="page-content" onClick={ showTokenized }>
-            {/* { props.page.pageIndex } */}
+        <div 
+            className="page-content" 
+            data-toogle="false"
+            onClick={ handleClick } 
+            onMouseEnter={ handleMouse } 
+            onMouseLeave={ handleMouse }
+        >
+            <span className="page-text-toogle d-none" >
+                <FontAwesomeIcon icon={solid('eye')} border />
+            </span>
 
             <p className="page-text-content">
                 { props.page.content }

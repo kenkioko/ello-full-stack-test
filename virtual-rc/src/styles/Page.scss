@@ -23,6 +23,7 @@
     display: flex;
     top: 0;
     padding: 1rem;
+    align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     .page-nav-link {
@@ -48,16 +49,20 @@
         padding: 1px;
         margin: 0.5em 0;
     }
+}
 
-    p:hover {
-        cursor: pointer;
-    }
+.page-content:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .page-text-tokenized {
-    color: blue;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 
     span {
-        padding: 0 2px;   
+        padding: 0 2px;
+        margin: 0 2px;
+        border: 2px solid;
+        border-radius: 5px;
     }
 }
