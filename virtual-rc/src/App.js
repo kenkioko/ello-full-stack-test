@@ -41,8 +41,8 @@ class App extends Component {
         };
 
         // Fetch API
-        fetch('https://fullstack-engineer-test-n4ouilzfna-uc.a.run.app/graphql', {
-        // fetch('https://not.found.com', {
+        // fetch('https://fullstack-engineer-test-n4ouilzfna-uc.a.run.app/graphql', {
+        fetch('https://not.found.com', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

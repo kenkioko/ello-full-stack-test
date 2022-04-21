@@ -15,7 +15,11 @@ function Alert(props) {
     );
 
     return (
-        <Modal header={ props.alert.header } body={ message } />
+        <Modal 
+            id="alert-modal" 
+            header={ props.alert.header } 
+            body={ message } 
+        />
     );
 }
 
