@@ -3,22 +3,27 @@ import Modal from "./Modal";
 import {
     AppHeader,
     AppFooter
-} from '../components/Utility';
+} from './Utility';
 
 function Alert(props) {
     if (!props.alert) {
         return null;
     }
 
-    const message = (
+    const header = (
+        <h3>{ props.alert.header }</h3>
+    );
+
+    const body = (
         <p>{ props.alert.message }</p>
     );
 
     return (
         <Modal 
             id="alert-modal" 
-            header={ props.alert.header } 
-            body={ message } 
+            header={ header } 
+            body={ body } 
+            show={ true }
         />
     );
 }

@@ -27,10 +27,10 @@ function Modal(props) {
     }
 
     return (
-        <div className="modal" id={ props.id }>
+        <div className={ (props.show) ? 'modal d-block' : 'modal' } id={ props.id }>
             <div className="modal-content">
                 <div className="modal-header">
-                    <h3>{ props.header }</h3>
+                    { props.header }
 
                     <button type="button" className="button-close" onClick={ (e) => closeModal(props.id) } >
                         <FontAwesomeIcon icon={ solid('xmark') } border />

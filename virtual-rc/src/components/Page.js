@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import Content from '../components/Content';
+import Content from './Content';
+import Modal, { showModal } from "./Modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Construct the page content
-// Page content inside a page margin
 const displayPage = (pages) => {
     if (!pages) {
         return null;
@@ -78,6 +78,32 @@ function Page(props) {
     return page_view;
 }
 
+// Help button
+function Help(props) {
+    const header = (
+        <h3>Help Info</h3>
+    );
+
+    const body = (
+        <p>Click on the page text (content) to view the original text</p>
+    );
+
+    return (
+        <div>
+            <button className="button" onClick={ (e) => showModal(props.modal_id)}>
+                Help
+            </button>
+
+            <Modal 
+                id={ props.modal_id } 
+                header={ header } 
+                body={ body } 
+            />
+        </div>
+    )
+}
+
+// Pagination for the page contents
 function Pagination(props) {
     return (
         <div className="page-nav-pagination">
@@ -112,13 +138,16 @@ function Pagination(props) {
 function PageNav(props) {
     return (
         <div className="page-nav">
-            {/* Home button */}
             <div className="page-nav-link">
+                {/* Home button */}
                 <Link to="/">
                     <button className="button">
                         Home
                     </button>
                 </Link>
+
+                {/* Help button */}
+                <Help modal_id="help-modal" />
             </div>
 
             <Pagination 
