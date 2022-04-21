@@ -1,32 +1,21 @@
 import React, { Component } from 'react';
-import Alert from '../components/Alert';
+// import Alert from '../components/Modal';
+import BaseApp from "../components/Base";
 import Book from '../components/Book';
-import {
-    AppHeader,
-    AppFooter
-} from '../components/Utility';
 import '../styles/Book.scss';
 
 class IndexPage extends Component {
-    
     render() {
-        return (
-            <div className="app">
-                <AppHeader />
-
-                <div className="app-body">
-                    {/* Show Error Message */}
-                    <Alert alert={ this.props.alert } />
-
-                    {/* Show Book Component */}
-                    <div className="book-container">
-                        <Book book={ this.props.book } />
-                    </div>
-                </div>
-
-                <AppFooter />
+        const body = (
+            <div className="book-container">
+                {/* Show Book Component */}
+                <Book book={ this.props.book } />
             </div>
         );
+
+        return (
+            <BaseApp alert={ this.props.alert } body={ body } />
+        )
     }
 }
 

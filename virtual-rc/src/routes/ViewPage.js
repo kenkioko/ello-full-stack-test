@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Alert from '../components/Alert';
+import BaseApp from "../components/Base";
 import Page, { PageNav } from '../components/Page';
-import {
-    AppHeader,
-    AppFooter
-} from '../components/Utility';
 import '../styles/Page.scss';
 
 class ViewPage extends Component {
@@ -126,24 +122,19 @@ class ViewPage extends Component {
             page_lines: this.state.page_lines,
         });
 
-        return (
-            <div className="app">
-                <AppHeader />
-
+        const body = (
+            <div className="page-container">
                 {/* Page Naviation */}
                 { page_nav }
-
-                <div className="app-body">
-                    {/* Show Error Message */}
-                    <Alert alert={ this.props.alert } />
-
-                    {/* Show Page Component */}
-                    { page_view }
-                </div>
-
-                <AppFooter />
+                
+                {/* Show Page Component */}
+                { page_view }
             </div>
         );
+
+        return (
+            <BaseApp alert={ this.props.alert } body={ body } />
+        )
     }
 }
 
