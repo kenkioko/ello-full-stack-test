@@ -78,10 +78,41 @@ function Page(props) {
     return page_view;
 }
 
+function Pagination(props) {
+    return (
+        <div className="page-nav-pagination">
+            {/* Previous page*/}
+            <button 
+                className="page-nav-prev" 
+                data-pagination="prev"
+                onClick={ props.pagination }
+                disabled={ (props.current_page <= 1) && 'disabled' }
+            >
+                <FontAwesomeIcon icon={ solid('chevron-left') } size="3x" border />
+            </button>
+
+            <p className="current-page">
+                { props.current_page } of { props.total_pages }
+            </p>
+
+            {/* Next page */}
+            <button 
+                className="page-nav-next" 
+                data-pagination="next"
+                onClick={ props.pagination }
+                disabled={ (props.current_page >= props.total_pages) && 'disabled' }
+            >
+                <FontAwesomeIcon icon={ solid('chevron-right') } size="3x" border />
+            </button>
+        </div>
+    );
+}
+
 // Page navigation buttons
 function PageNav(props) {
     return (
         <div className="page-nav">
+            {/* Home button */}
             <div className="page-nav-link">
                 <Link to="/">
                     <button className="button">
@@ -90,24 +121,42 @@ function PageNav(props) {
                 </Link>
             </div>
 
+            <Pagination 
+                current_page={ props.current_page } 
+                total_pages={ props.total_pages }
+                pagination={ props.pagination }
+            />
+
             <div className="page-nav-form">
+                {/* Page columns */}
                 <div className="custom-select">
                     <label htmlFor="page-view">
-                        <FontAwesomeIcon icon={solid('table-columns')} size="3x" border />
+                        <FontAwesomeIcon icon={ solid('table-columns') } size="3x" border />
                     </label>
                     
-                    <select name="page-view" id="page-view-select" onChange={ props.view_change } defaultValue={ props.page_view }>
+                    <select 
+                        id="page-view-select"
+                        name="page-view"  
+                        onChange={ props.view_change } 
+                        defaultValue={ props.page_view }
+                    >
                         <option value="1">Single</option>
                         <option value="2">Double</option>
                     </select>
                 </div>
 
+                {/* Total page lines */}
                 <div className="custom-select">
                     <label htmlFor="page-lines">
-                        <FontAwesomeIcon icon={solid('grip-lines')} size="3x" border />
+                        <FontAwesomeIcon icon={ solid('grip-lines') } size="3x" border />
                     </label>
 
-                    <select name="page-lines" id="page-lines-select" onChange={ props.lines_change } defaultValue={ props.page_lines }>
+                    <select 
+                        id="page-lines-select"
+                        name="page-lines" 
+                        onChange={ props.lines_change } 
+                        defaultValue={ props.page_lines }
+                    >
                         <option value="10">10 Lines</option>
                         <option value="20">20 Lines</option>
                         <option value="30">30 Lines</option>

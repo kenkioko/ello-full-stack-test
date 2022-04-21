@@ -11,12 +11,40 @@ class ViewPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page_view: 1,
-            page_lines: 20,
+            total_pages: 0,
+            page_view: 2,
+            page_lines: 10,
             current_page: !(props.book) ? 0 : 1,
         };
     }
 
+    componentDidMount() {
+        this.calculateTotalPages();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+        
+        var state_changed = !equals(this.state, prevState);
+        var props_changed = !equals(this.props, prevProps);
+        
+        if (state_changed || props_changed) {
+            this.calculateTotalPages();
+        }
+    }
+
+    // Total pages
+    calculateTotalPages = () => {
+        if (this.props.book) {
+            var total_lines = this.state.page_lines * this.state.page_view;
+            var total_pages = Math.ceil(this.props.book.pages.length / total_lines);
+            this.setState({
+                total_pages: total_pages
+            });
+        }
+    }
+
+    // Get the page state
     pageTextIndex = () => {
         if (!this.props.book) {
             return [];
@@ -35,18 +63,28 @@ class ViewPage extends Component {
         return page_text;
     }
 
-    handleNextPage = (event) => {
-        var current_page = this.state.current_page + this.state.page_view;
-        this.setState({
-            current_page: current_page
-        });
-    }
+    // Next and Previous pages
+    handlePagination = (event) => {
+        const pagination = event.currentTarget.dataset.pagination;
+        var current_page = this.state.current_page;
 
-    handlePrevPage = () => {
-        var current_page = this.state.current_page - this.state.page_view;
-        this.setState({
-            current_page: current_page
-        });
+        // Next page
+        if (pagination === 'next' && this.state.current_page < this.state.total_pages) {
+            // current_page = this.state.current_page + this.state.page_view;
+            current_page = this.state.current_page + 1;
+        } 
+        
+        // Previous page
+        if (pagination === 'prev' && this.state.current_page > 1) {
+            // current_page = this.state.current_page - this.state.page_view;
+            current_page = this.state.current_page - 1;
+        }
+
+        if (current_page !== this.state.current_page) {
+            this.setState({
+                current_page: current_page
+            });
+        }
     }
 
     // change page view event
@@ -72,8 +110,11 @@ class ViewPage extends Component {
     render() {
         // Page navigation element
         const page_nav = React.createElement(PageNav, {
-            page_view: this.state.page_view,
+            current_page: this.state.current_page,
+            total_pages: this.state.total_pages,
             page_lines: this.state.page_lines,
+            page_view: this.state.page_view,
+            pagination:this.handlePagination,
             view_change: this.handleViewChange,
             lines_change: this.handleLinesChange,
         });

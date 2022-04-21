@@ -66,7 +66,7 @@ function Content(props) {
             onMouseLeave={ handleMouse }
         >
             <span className="page-text-toogle d-none" >
-                <FontAwesomeIcon icon={solid('eye')} border />
+                <FontAwesomeIcon icon={ solid('eye') } border />
             </span>
 
             <p className="page-text-content">

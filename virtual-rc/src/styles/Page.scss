@@ -35,6 +35,25 @@
         display: flex;
         margin-left: auto;
     }
+
+    .page-nav-pagination {
+        display: flex;
+
+        .page-nav-next,
+        .page-nav-prev {
+            background-color: #555555;
+            color: white;
+            cursor: pointer;
+        }
+
+        .current-page {
+            text-align: center;
+            font-size: 40px;
+            margin: 0 5px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 .page-content {
